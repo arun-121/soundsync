@@ -7,7 +7,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 import SideBar from "./components/SideBar.jsx";
 import GroupRoom from "./components/GroupRoom.jsx";
 import AudioPlayer from "./components/AudioPlayer.jsx";
@@ -15,6 +15,18 @@ import AudioPlayer from "./components/AudioPlayer.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <Router>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <Main />
     </Router>
   </>

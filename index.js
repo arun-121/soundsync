@@ -99,15 +99,26 @@ try {
     io.on('connection', (socket) => {
         console.log('⚡ new user connected')
         socket.on('join_room', (data) => {
+
             socket.join(data.Room)
             console.log(data.Room);
+
         })
 
+        socket.on('send_query', data => {
+
+            io.to(data.Room).emit('receive_query', data.query)
+
+        })
         socket.on('chat', (data) => {
             console.log(data);
             io.to(data.Room).emit('receive', data.val);
         })
 
+        socket.on('play_music', data => {
+            console.log(data.url);
+            io.to(data.Room).emit('start_playing', data.url);
+        })
     })
 
 } catch (error) {

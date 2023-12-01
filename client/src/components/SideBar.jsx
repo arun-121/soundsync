@@ -6,57 +6,51 @@ import {
   ListItemPrefix,
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import {
-  PresentationChartBarIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  PowerIcon,
-} from "@heroicons/react/24/solid";
-
+import { Home, Users, LogOut } from "lucide-react";
 export function SideBar() {
   const navigate = useNavigate();
   return (
-    <Card
-      style={
-        {
-          // background: "rgba(0, 0, 0, 0.25)",
-        }
-      }
-      className=" rounded-none bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-custom h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 flex-col"
-    >
+    <Card className=" rounded-none bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-custom h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 flex-col">
       <div className="mb-2 p-4">
-        <Typography variant="h5" color="blue-gray">
+        <Typography
+          variant="h5"
+          color="blue-gray"
+          className="mt-5 mb-7 text-4xl"
+          style={{ textShadow: "4px 3px 34px rgba(142,255,251,1)" }}
+        >
           SoundSync
         </Typography>
       </div>
-      <List>
+      <List className="flex gap-12">
         <ListItem>
-          <ListItemPrefix>
-            <PresentationChartBarIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Home
+          <div className="flex gap-4">
+            <div>
+              <Home color="#ffffff" />
+            </div>
+            <div>Home</div>
+          </div>
         </ListItem>
         <ListItem
+          // className="m-3"
           onClick={() => {
             navigate("/room");
           }}
         >
-          <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Group Room
+          <div className="flex gap-4">
+            <div>
+              <Users color="#ffffff" />
+            </div>
+            <div>Join Room</div>
+          </div>
         </ListItem>
+
         <ListItem>
-          <ListItemPrefix>
-            <Cog6ToothIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Settings
-        </ListItem>
-        <ListItem>
-          <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Log Out
+          <div className="flex gap-4">
+            <div>
+              <LogOut color="#ffffff" />
+            </div>
+            <div>Log Out</div>
+          </div>
         </ListItem>
       </List>
     </Card>

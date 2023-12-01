@@ -1,4 +1,11 @@
 const data = [
+    {
+
+        "name": "Something in the way",
+        "icon": "songs/icons/bat2022.jpeg",
+        "audio": "Something_In_The_Way.mp3",
+        "artist": "Michael Giacchino"
+    },
 
     {
 
@@ -28,14 +35,22 @@ const data = [
         "audio": "playdate.mp3",
         "artist": "Melanie Martinez "
     },
-
     {
 
-        "name": "Something in the way",
-        "icon": "songs/icons/bat2022.jpeg",
-        "audio": "Something_In_The_Way.mp3",
-        "artist": "Michael Giacchino"
+        "name": " Starboy ",
+        "icon": "songs/icons/starboy.jpeg",
+        "audio": "starboy.mp3",
+        "artist": "The Weekend "
     },
+    {
+
+        "name": " Love me like you do ",
+        "icon": "songs/icons/ellie.jpeg",
+        "audio": "loveme.mp3",
+        "artist": "Ellie Goulding"
+    },
+
+
     {
 
         "name": "The Quarantine Zone",
@@ -66,12 +81,20 @@ const data = [
         "artist": "Hans Zimmer"
     },
     {
-        "name": "Aaromal",
-        "icon": "songs/icons/vtv.jpg",
-        "audio": "Aaromal.mp3",
-        "artist": "AR Rahman"
+        "name": "Without Me",
+        "icon": "songs/icons/eminem.jpeg",
+        "audio": "eminem.mp3",
+        "artist": "Eminem"
 
 
+    },
+
+    {
+
+        "name": "Ale le Etti",
+        "icon": "songs/icons/nayyandi.jpeg",
+        "audio": "nayyandi.mp3",
+        "artist": "Ghibran"
     },
     {
 
@@ -82,15 +105,17 @@ const data = [
     },
     {
 
-        "name": "Adiye-Sakkarakatti",
-        "icon": "songs/icons/MEESAYA MURUKU.jpg",
-        "audio": "Adiye-Sakkarakatti.mp3",
-        "artist": "Hip Hop Tamizha"
+        "name": "Maalai mangum neram",
+        "icon": "songs/icons/rowthiram.jpeg",
+        "audio": "rowthiram.mp3",
+        "artist": "Prakash"
     },
+
+
     {
 
         "name": "Wasted",
-        "icon": "songs/icons/Vikram.webp",
+        "icon": "songs/icons/vik.jpeg",
         "audio": "Wasted.mp3",
         "artist": "Anirudh"
     },
@@ -102,12 +127,28 @@ const data = [
         "artist": "Hans Zimmer"
     },
     {
+        "name": "Summertime Sadness",
+        "icon": "songs/icons/lanadel.jpeg",
+        "audio": "lanadel.mp3",
+        "artist": "Lana Del Ray"
+
+
+    },
+    {
 
         "name": "Sonapareeya",
         "icon": "songs/icons/MARYAN.webp",
         "audio": "Sonapareeya.mp3",
         "artist": "Yuvan"
     },
+    {
+
+        "name": "Halena",
+        "icon": "songs/icons/IRUMUGAN.jpg",
+        "audio": "Halena.mp3",
+        "artist": "Harris Jayaraj"
+    },
+
     {
 
         "name": "Yaanji Yaanji",
@@ -127,8 +168,17 @@ const data = [
         "name": " Pathala Pathala ",
         "icon": "songs/icons/Vikram.webp",
         "audio": "Pathala.mp3",
-        "artist": "Vijay Anthony"
+        "artist": "Anirudh"
     },
+    {
+        "name": "Aaromal",
+        "icon": "songs/icons/vtv.jpg",
+        "audio": "Aaromal.mp3",
+        "artist": "AR Rahman"
+
+
+    },
+
 
 
 ]

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAudioElement } from "./util";
 import { Play, Pause } from "lucide-react";
+
 import Song from "./Song";
 import SideBar from "./SideBar";
 function Progressbar() {
@@ -18,7 +19,6 @@ function Progressbar() {
     setSec(Math.floor(e % 60));
   };
   audioElement.onUpdateTime = (e) => {
-    console.log(e);
     setCurrentTime(e);
     setCurrMin(Math.floor(e / 60));
     setCurrSec(Math.floor(e % 60));
@@ -28,7 +28,7 @@ function Progressbar() {
     <>
       <div className="flex justify-center items-center ">
         <div>
-          <span className="">{`${currmin}:${
+          <span className="mr-5">{`${currmin}:${
             currsec < 10 ? "0" : ""
           }${currsec}`}</span>
         </div>
@@ -46,7 +46,7 @@ function Progressbar() {
           />
         </div>
         <div>
-          <span className="">{`${min}:${sec < 10 ? "0" : ""}${sec}`}</span>
+          <span className="ml-5">{`${min}:${sec < 10 ? "0" : ""}${sec}`}</span>
         </div>
       </div>
     </>
@@ -80,12 +80,12 @@ const AudioPlayer = () => {
 
   return data.length != 0 ? (
     <>
-      <div className="flex gap-3 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600  ">
+      <div className="flex gap-3 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500">
         <SideBar />
 
         <div>
           <div
-            className="flex flex-wrap gap-5 "
+            className="flex flex-wrap gap-5  noScrollBar mr-1"
             style={{ flex: "1", overflowY: "scroll", height: "90vh" }}
           >
             {data.map((e, i) => (
@@ -112,6 +112,7 @@ const AudioPlayer = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                // width: "100px",
               }}
             >
               {isPlaying ? <Pause /> : <Play />}
