@@ -21,8 +21,8 @@ export function SideBar() {
           SoundSync
         </Typography>
       </div>
-      <List className="flex gap-12">
-        <ListItem>
+      <List className="flex gap-12 ">
+        <ListItem className="hover:scale-110 transition duration-500 smoothTransistion rounded-md">
           <div className="flex gap-4">
             <div>
               <Home color="#ffffff" />
@@ -31,7 +31,7 @@ export function SideBar() {
           </div>
         </ListItem>
         <ListItem
-          // className="m-3"
+          className="hover:scale-110 transition duration-500 smoothTransistion rounded-md"
           onClick={() => {
             navigate("/room");
           }}
@@ -44,7 +44,7 @@ export function SideBar() {
           </div>
         </ListItem>
 
-        <ListItem>
+        <ListItem className="hover:scale-110 transition duration-500 smoothTransistion rounded-md">
           <div className="flex gap-4">
             <div>
               <LogOut color="#ffffff" />

@@ -13,10 +13,16 @@ input[type="range"]::-webkit-slider-runnable-track {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
+.smoothTransistion:hover {
+
+
+  background-color: rgba(0, 255, 255, 0.438);
+}
+
+
 .noScrollBar {
   -ms-overflow-style: none;
-  /* IE and Edge */
+
   scrollbar-width: none;
-  /* Firefox */
+
 }

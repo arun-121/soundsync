@@ -1,7 +1,9 @@
+import { Flag } from "lucide-react";
 import { getAudioElement } from "./util";
 import { toast } from "react-toastify";
 const Song = ({ name, icon, audio, artist, callback }) => {
   let audioElement = getAudioElement();
+
   return (
     <>
       <div
