@@ -4,7 +4,7 @@ const data = [
         "name": "Something in the way",
         "icon": "songs/icons/bat2022.jpeg",
         "audio": "Something_In_The_Way.mp3",
-        "artist": "Michael Giacchino"
+        "artist": "Michael"
     },
 
     {
@@ -33,7 +33,7 @@ const data = [
         "name": "Play Date ",
         "icon": "songs/icons/playdate.jpeg",
         "audio": "playdate.mp3",
-        "artist": "Melanie Martinez "
+        "artist": "Melanie  "
     },
     {
 
@@ -56,7 +56,7 @@ const data = [
         "name": "The Quarantine Zone",
         "icon": "songs/icons/lastofus.jpeg",
         "audio": "lastofus.mp3",
-        "artist": "Gustavo Santonella"
+        "artist": " Santonella"
     },
     {
 
@@ -121,7 +121,7 @@ const data = [
     },
     {
 
-        "name": "Interstellar Main Theme ",
+        "name": "Interstellar Main Theme",
         "icon": "songs/icons/interstellar.jpeg",
         "audio": "interstellar.mp3",
         "artist": "Hans Zimmer"
@@ -178,8 +178,60 @@ const data = [
 
 
     },
+    {
+        "name": "Petta Parak",
+        "icon": "songs/icons/petta.jpeg",
+        "audio": "petta.mp3",
+        "artist": "Anirudh"
 
+
+    },
+    {
+        "name": "Naan Naan",
+        "icon": "songs/icons/mahan.jpeg",
+        "audio": "naan-naan.mp3",
+        "artist": "Santhosh Narayanan"
+
+
+    },
+    {
+        "name": "Theemai",
+        "icon": "songs/icons/thanioruvan.jpeg",
+        "audio": "Thani-Oruvan.mp3",
+        "artist": "HipHop Tamizha"
+
+
+    },
+    {
+        "name": "Unakku Thaan",
+        "icon": "songs/icons/chithha.jpeg",
+        "audio": "Unakku Thaan.mp3",
+        "artist": "Dhibu Thomas"
+
+    },
+    {
+        "name": "Thenmozhi",
+        "icon": "songs/icons/thenmozhi.jpeg",
+        "audio": "thenmozhi.mp3",
+        "artist": "Anirudh"
+
+
+    },
+    {
+        "name": "Endi Ippadi",
+        "icon": "songs/icons/enakkuloruvan.jpeg",
+        "audio": "Endi-Ippadi.mp3",
+        "artist": "Santhosh Narayanan"
+
+
+    },
 
 
 ]
+
+data.forEach((element, i) => {
+    element['id'] = i
+
+});
+
 module.exports = data;

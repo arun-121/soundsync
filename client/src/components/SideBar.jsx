@@ -10,7 +10,7 @@ import { Home, Users, LogOut } from "lucide-react";
 export function SideBar() {
   const navigate = useNavigate();
   return (
-    <Card className=" rounded-none bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-custom h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 flex-col">
+    <Card className="  hidden md:flex rounded-none bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-custom h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 flex-col">
       <div className="mb-2 p-4">
         <Typography
           variant="h5"
@@ -22,7 +22,12 @@ export function SideBar() {
         </Typography>
       </div>
       <List className="flex gap-12 ">
-        <ListItem className="hover:scale-110 transition duration-500 smoothTransistion rounded-md">
+        <ListItem
+          className="hover:scale-110 transition duration-500 hover:bg-cyan-400/50 rounded-md"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <div className="flex gap-4">
             <div>
               <Home color="#ffffff" />
@@ -44,14 +49,14 @@ export function SideBar() {
           </div>
         </ListItem>
 
-        <ListItem className="hover:scale-110 transition duration-500 smoothTransistion rounded-md">
+        {/* <ListItem className="hover:scale-110 transition duration-500 smoothTransistion rounded-md">
           <div className="flex gap-4">
             <div>
               <LogOut color="#ffffff" />
             </div>
             <div>Log Out</div>
           </div>
-        </ListItem>
+        </ListItem> */}
       </List>
     </Card>
   );

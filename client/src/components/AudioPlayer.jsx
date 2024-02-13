@@ -4,6 +4,7 @@ import { Play, Pause } from "lucide-react";
 
 import Song from "./Song";
 import SideBar from "./SideBar";
+import Slider from "./Slider";
 function Progressbar() {
   const [duration, setDuration] = useState(0);
   const [currenttime, setCurrentTime] = useState(0);
@@ -55,7 +56,6 @@ function Progressbar() {
 
 const AudioPlayer = () => {
   const [data, setData] = useState([]);
-  const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   let audioElement = getAudioElement();
   window.audio = audioElement;
@@ -80,13 +80,13 @@ const AudioPlayer = () => {
 
   return data.length != 0 ? (
     <>
-      <div className="flex gap-3 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500">
+      <div className="flex gap-3 bg-gradient-to-r from-green-500 via-blue-500 to-cyan-500 ">
         <SideBar />
 
         <div>
           <div
             className="flex flex-wrap gap-5  noScrollBar mr-1"
-            style={{ flex: "1", overflowY: "scroll", height: "90vh" }}
+            style={{ flex: "1", overflowX: "scroll", height: "90vh" }}
           >
             {data.map((e, i) => (
               <Song

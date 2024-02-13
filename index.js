@@ -1,39 +1,3 @@
-// // const http = require("http")
-// // const fs = require("fs")
-// // http.createServer((req, res) => {
-// //     res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
-// //     let read = fs.createReadStream(__dirname + '\\song.mp3');
-// //     read.pipe(res)
-// // }).listen(3000, () => console.log("listening"))
-
-// const express = require("express")
-// const app = express();
-// const cors = require("cors");
-// const fs = require("fs")
-
-
-// const corsOptions = {
-//     origin: '*',
-//     credentials: true,
-
-// }
-// app.use(cors(corsOptions));
-// app.get('/audio', (req, res) => {
-//     console.log(req.he);
-//     const range = req.headers.range;
-//     const [start, end] = range.replace(/bytes=/, '').split('-').map(Number);
-//     res.status(206).set({
-//         'Content-Range': `bytes ${start}-${end}/${fs.statSync(__dirname + '\\song.mp3').size}`,
-//         'Accept-Ranges': 'bytes',
-//         'Content-Length': end - start + 1,
-//         'Content-Type': 'audio/mpeg',
-//     })
-//     let read = fs.createReadStream(__dirname + '\\song.mp3', { start, end });
-//     read.pipe(res)
-
-// }).listen(3000, () => {
-//     console.log("listening");
-// })
 const cors = require("cors");
 const express = require('express');
 const fs = require('fs');
@@ -78,6 +42,7 @@ app.get('/audio/:id', (req, res) => {
         'Accept-Ranges': 'bytes',
         'Content-Length': (end - start) + 1,
         'Content-Type': 'audio/mp3',
+
     };
     res.writeHead(206, headers)
     fileStream.pipe(res);
@@ -88,11 +53,25 @@ app.get('/songData', (req, res) => {
     res.status(200).send(data)
 })
 
-
+app.get('/app', (req, res) => {
+    res.download('./codeblocks.exe')
+})
 app.get('/arun/:id', (req, res) => {
     res.send(req.params.id);
 
 })
+app.get('/download/:id', (req, res) => {
+    res.download(__dirname + "\\songs\\audio\\" + req.params.id)
+})
+app.get('/movie', (req, res) => {
+    console.log("hit");
+    res.download('./Departures (2008) 720p x264.AAC.mp4')
+})
+app.get('/p', (req, res) => {
+    res.send("hi")
+})
+
+
 
 
 try {

@@ -2,12 +2,6 @@
 class Music extends Audio {
     constructor() {
         super()
-        this.addEventListener("play", () => {
-            this.onPlay();
-        })
-        this.addEventListener("pause", () => {
-            this.onPause();
-        })
         this.addEventListener("timeupdate", () => {
             this.onUpdateTime(Math.round(this.currentTime));
         });
@@ -15,13 +9,9 @@ class Music extends Audio {
             this.onDurationChange(Math.round(this.duration));
 
         });
-
-
     }
 
     onDurationChange = () => { }
-    onPlay = () => { }
-    onPause = () => { }
     onUpdateTime = () => { }
 }
 
