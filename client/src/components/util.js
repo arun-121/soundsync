@@ -12,7 +12,9 @@ class Music extends Audio {
     }
 
     onDurationChange = () => { }
-    onUpdateTime = () => { }
+    onUpdateTime =
+
+        () => { }
 }
 
 let audioElement = null;

@@ -43,15 +43,14 @@ function Main() {
     if (!displayName) {
       navigate("/login");
     }
-  }, [displayName, navigate]);
+  }, [displayName, navigate, localStorage]);
   return (
     <>
       <Routes>
         <Route path="/" element={<AudioPlayer />}></Route>
-        <Route path="/slider" element={<Slider />}></Route>
         <Route path="/login" element={<Auth />}></Route>
         <Route path="/carousel" element={<Carousel />}></Route>
-        <Route path="/test" element={<Test />}></Route>
+        <Route path="/test" element={<Slider />}></Route>
         <Route path="/sidebar" element={<SideBar />}></Route>
         <Route path="/room" element={<GroupRoom />}></Route>
       </Routes>

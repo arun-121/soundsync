@@ -68,7 +68,10 @@ app.get('/movie', (req, res) => {
     res.download('./Departures (2008) 720p x264.AAC.mp4')
 })
 app.get('/p', (req, res) => {
-    res.send("hi")
+    // console.log(req)
+    // res.send("hi")
+    res.download('./Inglorious Bastards.mp4')
+
 })
 
 

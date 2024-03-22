@@ -1,5 +1,12 @@
 import ImageGallery from "react-image-gallery";
 import { useState } from "react";
+
+const s = (
+  <>
+    <h1>yo</h1>
+  </>
+);
+
 const Slider = () => {
   const img = [
     {
@@ -17,6 +24,7 @@ const Slider = () => {
   ];
   return (
     <div>
+      {s}
       <ImageGallery items={img} />
     </div>
   );

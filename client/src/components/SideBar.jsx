@@ -48,6 +48,20 @@ export function SideBar() {
             <div>Join Room</div>
           </div>
         </ListItem>
+        <ListItem
+          className="hover:scale-110 transition duration-500 smoothTransistion rounded-md"
+          onClick={() => {
+            localStorage.removeItem("displayName");
+            navigate("/login");
+          }}
+        >
+          <div className="flex gap-4">
+            <div>
+              <Users color="#ffffff" />
+            </div>
+            <div>Sign out</div>
+          </div>
+        </ListItem>
 
         {/* <ListItem className="hover:scale-110 transition duration-500 smoothTransistion rounded-md">
           <div className="flex gap-4">
