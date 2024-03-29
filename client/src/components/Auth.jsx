@@ -1,20 +1,33 @@
+import { createContext, useContext, useState } from "react";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../config/configuration";
 import Lottie from "lottie-react";
 import anim2 from "../assets/anim2.json";
+import { useAuthContext } from "./context/AuthProvider";
 const Auth = () => {
   const navigate = useNavigate();
-
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { user, setUser } = useAuthContext();
   const handleSignin = () => {
+    setLoading(true);
+    setError(null);
     signInWithPopup(auth, provider)
       .then((data) => {
-        console.log(data.user.displayName);
-        localStorage.setItem(`displayName`, data.user.displayName);
-        navigate("/");
+        auth.currentUser
+          .getIdToken()
+          .then((d) => {
+            localStorage.setItem("authId", d);
+            navigate("/");
+          })
+          .catch((e) => console.log(e))
+          .finally(() => setLoading(false));
       })
       .catch((error) => {
         console.error("Error signing in:", error);
+        setError(error.message); // Set error message to be displayed in UI
+        setLoading(false);
       });
   };
 
@@ -39,9 +52,11 @@ const Auth = () => {
             style={{ zIndex: "-1" }}
             className="bg-blue-950 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded"
             onClick={handleSignin}
+            disabled={loading} // Disable button when loading
           >
-            Sign in
+            {loading ? "Signing in..." : "Sign in"}
           </button>
+          {error && <p className="text-red-500">{error}</p>}{" "}
           <Lottie
             animationData={anim2}
             style={{

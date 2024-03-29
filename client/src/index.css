@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  /* box-sizing: border-box; */
+}
+
 input[type="range"]::-webkit-slider-runnable-track {
   background: rgb(37, 2, 50);
   border-radius: 30px;
@@ -25,4 +29,14 @@ input[type="range"]::-webkit-slider-runnable-track {
 
   scrollbar-width: none;
 
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.63);
+}
+
+.modal {
+
+
+  /* color: blue; */
 }

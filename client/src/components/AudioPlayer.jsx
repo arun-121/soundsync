@@ -4,7 +4,6 @@ import { Play, Pause } from "lucide-react";
 
 import Song from "./Song";
 import SideBar from "./SideBar";
-import Slider from "./Slider";
 function Progressbar() {
   const [duration, setDuration] = useState(0);
   const [currenttime, setCurrentTime] = useState(0);
@@ -57,8 +56,7 @@ function Progressbar() {
 const AudioPlayer = () => {
   const [data, setData] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
-  let audioElement = getAudioElement();
-  window.audio = audioElement;
+  window.audioElement = getAudioElement();
   function handlePlayPause() {
     if (isPlaying) {
       audioElement.pause();
@@ -112,7 +110,6 @@ const AudioPlayer = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                // width: "100px",
               }}
             >
               {isPlaying ? <Pause /> : <Play />}
@@ -123,7 +120,9 @@ const AudioPlayer = () => {
       </div>
     </>
   ) : (
-    <>{/* <HomeSkeleton /> */}</>
+    <>
+      <h1>loading...</h1>
+    </>
   );
 };
 export default AudioPlayer;
