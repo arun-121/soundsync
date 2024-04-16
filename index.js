@@ -53,13 +53,7 @@ app.get('/songData', (req, res) => {
     res.status(200).send(data)
 })
 
-app.get('/app', (req, res) => {
-    res.download('./codeblocks.exe')
-})
-app.get('/arun/:id', (req, res) => {
-    res.send(req.params.id);
 
-})
 app.get('/download/:id', (req, res) => {
     res.download(__dirname + "\\songs\\audio\\" + req.params.id)
 })
