@@ -1,5 +1,7 @@
-**#SOUNDSYNC:**\
-1.Stream Music\
-2.Create custom rooms\
-3.Invite friends to listen\
-4.Chat together
+<h1 id="soundsync">SOUNDSYNC:</br></h1>
+<ul>
+<li>Stream Music</br></li>
+<li>Create custom rooms</br></li>
+<li>Invite friends to listen</br></li>
+<li>Chat together</li>
+</ul>
