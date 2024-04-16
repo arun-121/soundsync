@@ -1,15 +1,29 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { signInWithPopup } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { auth, provider } from "../config/configuration";
 import Lottie from "lottie-react";
 import anim2 from "../assets/anim2.json";
 import { useAuthContext } from "./context/AuthProvider";
+import { onAuthStateChanged } from "firebase/auth";
 const Auth = () => {
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useAuthContext();
+  useEffect(() => {
+    const authId = localStorage.getItem("authId");
+    const unsubscribe = onAuthStateChanged(auth, (d) => {
+      if (d) {
+        if (d.accessToken === authId) setIsLoggedIn(true);
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { user, setUser } = useAuthContext();
+
   const handleSignin = () => {
     setLoading(true);
     setError(null);
@@ -19,6 +33,7 @@ const Auth = () => {
           .getIdToken()
           .then((d) => {
             localStorage.setItem("authId", d);
+            setIsLoggedIn(true);
             navigate("/");
           })
           .catch((e) => console.log(e))
@@ -32,15 +47,16 @@ const Auth = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-violet-200 via-blue-500 to-cyan-500 min-h-screen flex justify-center items-center">
+    <div className="bg-gradient-to-r from-violet-200 via-blue-500 to-cyan-500 h-[100vh] flex justify-center items-center">
       <div className="bg-opacity-50 backdrop-filter backdrop-blur-lg rounded-lg p-8">
         <div className="text-center">
           <h1
-            className="text-7xl font-bold text-blue-950"
+            className=" text-responsive text-7xl font-bold text-blue-950"
             style={{
               textShadow:
                 "0 0 2px rgba(255, 255, 255, 0.7), 0 0 1px rgba(255, 255, 255, 0.7), 0 0 5px rgba(255, 255, 255, 0.7)",
               marginTop: "70px",
+              // margin: "10px",
             }}
           >
             SoundSync

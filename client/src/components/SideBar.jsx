@@ -14,7 +14,7 @@ import { auth } from "../config/configuration";
 export function SideBar() {
   const navigate = useNavigate();
   return (
-    <Card className="  hidden md:flex rounded-none bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-custom h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 flex-col">
+    <Card className=" sidebar    rounded-none bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-custom h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 flex-col">
       <div className="mb-2 p-4">
         <Typography
           variant="h5"

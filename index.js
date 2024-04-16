@@ -63,19 +63,6 @@ app.get('/arun/:id', (req, res) => {
 app.get('/download/:id', (req, res) => {
     res.download(__dirname + "\\songs\\audio\\" + req.params.id)
 })
-app.get('/movie', (req, res) => {
-    console.log("hit");
-    res.download('./Departures (2008) 720p x264.AAC.mp4')
-})
-app.get('/p', (req, res) => {
-    // console.log(req)
-    // res.send("hi")
-    res.download('./Inglorious Bastards.mp4')
-
-})
-
-
-
 
 try {
     io.on('connection', (socket) => {

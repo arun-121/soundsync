@@ -32,9 +32,9 @@ const Song = ({ name, icon, audio, artist, callback }) => {
           minWidth: "150px",
           maxWidth: "200px",
         }}
-        className="bg-transparent drop-shadow-2xl  m-2   p-3 cursor-pointer hover:transition duration-500 hover:scale-110 "
+        className="bg-transparent drop-shadow-2xl  m-2   p-3 cursor-pointer  "
       >
-        <div className="h-[100%] flex flex-col ">
+        <div className="h-[100%] flex flex-col hover:transition duration-500 hover:scale-105 ">
           <img
             onClick={() => {
               audioElement.src = `http://localhost:3000/audio/` + audio;

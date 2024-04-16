@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Auth from "./components/Auth.jsx";
@@ -16,10 +16,10 @@ import { ToastContainer } from "react-toastify";
 import SideBar from "./components/SideBar.jsx";
 import GroupRoom from "./components/GroupRoom.jsx";
 import AudioPlayer from "./components/AudioPlayer.jsx";
-import Slider from "./components/Slider.jsx";
+
 import { auth } from "./config/configuration.js";
 import { onAuthStateChanged } from "firebase/auth";
-
+import Protected from "./Protected.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
     <AuthProvider>
@@ -29,23 +29,20 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 function App() {
+  const { isLoggedIn, setIsLoggedIn } = useAuthContext();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("navigated");
     const authId = localStorage.getItem("authId");
-    if (!authId) {
-      navigate("/login");
-      return;
-    }
-    onAuthStateChanged(auth, (d) => {
-      if (d?.accessToken != authId) {
-        navigate("/login");
-      }
-      if (pathname == "/login" && d?.accessToken == authId) {
-        navigate("/");
+    const unsubscribe = onAuthStateChanged(auth, (d) => {
+      if (d) {
+        if (d.accessToken != authId) navigate("/login");
       }
     });
+
+    return () => unsubscribe();
   }, [navigate]);
 
   return (
@@ -63,11 +60,25 @@ function App() {
         theme="dark"
       />
       <Routes>
-        <Route path="/" element={<AudioPlayer />} />
+        <Route
+          path="/"
+          element={
+            <Protected>
+              <AudioPlayer />
+            </Protected>
+          }
+        />
         <Route path="/login" element={<Auth />} />
-        <Route path="/test" element={<Slider />} />
+
         <Route path="/sidebar" element={<SideBar />} />
-        <Route path="/room" element={<GroupRoom />} />
+        <Route
+          path="/room"
+          element={
+            <Protected>
+              <GroupRoom />
+            </Protected>
+          }
+        />
       </Routes>
     </>
   );
