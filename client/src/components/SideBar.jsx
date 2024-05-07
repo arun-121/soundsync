@@ -66,6 +66,21 @@ export function SideBar() {
             <div>Sign out</div>
           </div>
         </ListItem>
+        <div className="flex  absolute bottom-3 gap-1">
+          <div>
+            <img
+              src={localStorage.getItem("profile")}
+              alt=""
+              width={"50px"}
+              height={"50px"}
+              style={{ borderRadius: "100px" }}
+            />
+          </div>
+          <div>
+            <p>{localStorage.getItem("email")}</p>
+            <h1>{localStorage.getItem("name")}</h1>
+          </div>
+        </div>
         <dialog className="bg-gradient-to-r from-gray-900 via-gray-900 to-black modal p-5 text-white rounded-[10px]">
           <h1 className="text-lg font-bold mb-4">
             Are you sure you want to sign out?

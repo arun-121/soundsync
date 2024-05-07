@@ -14,7 +14,6 @@ const Auth = () => {
     const unsubscribe = onAuthStateChanged(auth, (d) => {
       if (d) {
         if (d.accessToken === authId) setIsLoggedIn(true);
-        navigate("/");
       }
     });
 
@@ -29,10 +28,14 @@ const Auth = () => {
     setError(null);
     signInWithPopup(auth, provider)
       .then((data) => {
+        localStorage.setItem("profile", data.user.photoURL);
+        localStorage.setItem("name", data.user.displayName);
+        localStorage.setItem("email", data.user.email);
         auth.currentUser
           .getIdToken()
           .then((d) => {
             localStorage.setItem("authId", d);
+
             setIsLoggedIn(true);
             navigate("/");
           })
@@ -41,7 +44,7 @@ const Auth = () => {
       })
       .catch((error) => {
         console.error("Error signing in:", error);
-        setError(error.message); // Set error message to be displayed in UI
+        setError(error.message);
         setLoading(false);
       });
   };

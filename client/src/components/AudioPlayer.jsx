@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { getAudioElement } from "./util";
 import { Play, Pause } from "lucide-react";
-
+import Searchbar from "./SearchBar";
 import Song from "./Song";
 import SideBar from "./SideBar";
+import { usePlayingContext } from "./context/PlayingContextProvider";
 function Progressbar() {
   const [duration, setDuration] = useState(0);
   const [currenttime, setCurrentTime] = useState(0);
@@ -55,7 +56,9 @@ function Progressbar() {
 
 const AudioPlayer = () => {
   const [data, setData] = useState([]);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [filteredData, setfilteredData] = useState([]);
+  // const [isPlaying, setIsPlaying] = useState(false);
+  const { isPlaying, setIsPlaying } = usePlayingContext();
   window.audioElement = getAudioElement();
   function handlePlayPause() {
     if (isPlaying) {
@@ -70,7 +73,10 @@ const AudioPlayer = () => {
     function fetchData() {
       fetch("http://localhost:3000/songData")
         .then((r) => r.json())
-        .then((data) => setData(data));
+        .then((data) => {
+          setData(data);
+          setfilteredData(data);
+        });
     }
 
     fetchData();
@@ -80,41 +86,46 @@ const AudioPlayer = () => {
     <>
       <div className="flex gap-3 bg-gradient-to-r from-green-500 via-blue-500 to-cyan-500 ">
         <SideBar />
+        <div style={{ position: "relative" }}>
+          <Searchbar />
 
-        <div>
-          <div
-            className="flex flex-wrap gap-5  noScrollBar mr-1"
-            style={{ flex: "1", overflowX: "scroll", height: "90vh" }}
-          >
-            {data.map((e, i) => (
-              <Song
-                audioElement
-                {...e}
-                key={i}
-                callback={() => {
-                  setIsPlaying(true);
-                }}
-              />
-            ))}
-          </div>
-          <div
-            className="font-custom bg-gradient-to-r from-indigo-500 p-4 text-white-950"
-            style={{
-              textAlign: "center",
-              height: "10vh",
-            }}
-          >
+          <div>
             <div
-              onClick={handlePlayPause}
+              className=" win-height flex flex-wrap gap-5  noScrollBar mr-1"
+              style={{ flex: "1", overflowX: "scroll", height: "78vh" }}
+            >
+              {filteredData.map((e, i) => (
+                <Song
+                  audioElement
+                  {...e}
+                  key={i}
+                  callback={() => {
+                    setIsPlaying(true);
+                  }}
+                />
+              ))}
+            </div>
+            <div
+              className="font-custom bg-gradient-to-r from-indigo-500 p-4 text-white-950"
               style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                textAlign: "center",
+                height: "10vh",
               }}
             >
-              {isPlaying ? <Pause /> : <Play />}
+              <div
+                onClick={handlePlayPause}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {isPlaying ? <Pause /> : <Play />}
+              </div>
+              <div>
+                <Progressbar />
+              </div>
             </div>
-            <Progressbar />
           </div>
         </div>
       </div>

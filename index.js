@@ -26,6 +26,20 @@ app.use(cors(corsOptions));
 let start = 0;
 app.use('/songs/icons', express.static(path.join(__dirname, 'songs/icons')))
 
+
+app.get('/search', (req, res) => {
+    res.send().json({})
+})
+app.get('/search/:id', (req, res) => {
+    const result = data.filter((e, i) => {
+
+        return e["name"].toLowerCase().includes(req.params.id.toLowerCase())
+
+    })
+    res.status(200).send(result.sort())
+})
+
+
 app.get('/audio/:id', (req, res) => {
     if (req.headers.range) {
         start = Number(req.headers.range.replace("bytes=", "").split("-")[0]);

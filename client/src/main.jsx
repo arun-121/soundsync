@@ -16,10 +16,11 @@ import { ToastContainer } from "react-toastify";
 import SideBar from "./components/SideBar.jsx";
 import GroupRoom from "./components/GroupRoom.jsx";
 import AudioPlayer from "./components/AudioPlayer.jsx";
-
+import PlayingContextProvider from "./components/context/PlayingContextProvider.jsx";
 import { auth } from "./config/configuration.js";
 import { onAuthStateChanged } from "firebase/auth";
 import Protected from "./Protected.jsx";
+import ProtectedLogin from "./ProtectedLogin.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
     <AuthProvider>
@@ -47,39 +48,49 @@ function App() {
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Protected>
-              <AudioPlayer />
-            </Protected>
-          }
+      <PlayingContextProvider>
+        {" "}
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
         />
-        <Route path="/login" element={<Auth />} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Protected>
+                <AudioPlayer />
+              </Protected>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <ProtectedLogin>
+                <Auth />
+              </ProtectedLogin>
+            }
+          />
 
-        <Route path="/sidebar" element={<SideBar />} />
-        <Route
-          path="/room"
-          element={
-            <Protected>
-              <GroupRoom />
-            </Protected>
-          }
-        />
-      </Routes>
+          <Route path="/sidebar" element={<SideBar />} />
+          <Route
+            path="/room"
+            element={
+              <Protected>
+                <GroupRoom />
+              </Protected>
+            }
+          />
+        </Routes>
+      </PlayingContextProvider>
     </>
   );
 }

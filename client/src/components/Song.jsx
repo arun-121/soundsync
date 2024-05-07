@@ -5,7 +5,7 @@ const Song = ({ name, icon, audio, artist, callback }) => {
   let audioElement = getAudioElement();
   function toastCall() {
     toast.success(`Playing  ${name} 🎧`, {
-      position: "top-center",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

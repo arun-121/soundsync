@@ -23,6 +23,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   background-color: rgba(0, 255, 255, 0.438);
 }
 
+.suggestion {
+  background-color: rgb(37, 2, 50);
+}
 
 .noScrollBar {
   -ms-overflow-style: none;
@@ -40,6 +43,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
   /* color: blue; */
 }
+
 
 @media only screen and (max-width:620px) {
   .sidebar {
