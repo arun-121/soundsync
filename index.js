@@ -9,6 +9,9 @@ const app = express();
 const server = createServer(app);
 const path = require('path')
 const port = 3000;
+const logo = require('asciiart-logo');
+const config = { "name": "server", "description": `listening on port ${port}` };
+
 const corsOptions = {
     origin: '*',
     credentials: true,
@@ -108,5 +111,5 @@ try {
 
 
 server.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(logo(config).render());
 });

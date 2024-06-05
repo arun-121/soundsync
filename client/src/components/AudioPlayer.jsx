@@ -5,7 +5,9 @@ import Searchbar from "./SearchBar";
 import Song from "./Song";
 import SideBar from "./SideBar";
 import { usePlayingContext } from "./context/PlayingContextProvider";
+
 function Progressbar() {
+  console.log("re rendered");
   const [duration, setDuration] = useState(0);
   const [currenttime, setCurrentTime] = useState(0);
   const [min, setMin] = useState(0);
@@ -55,9 +57,9 @@ function Progressbar() {
 }
 
 const AudioPlayer = () => {
+  console.log("audio player ");
   const [data, setData] = useState([]);
   const [filteredData, setfilteredData] = useState([]);
-  // const [isPlaying, setIsPlaying] = useState(false);
   const { isPlaying, setIsPlaying } = usePlayingContext();
   window.audioElement = getAudioElement();
   function handlePlayPause() {

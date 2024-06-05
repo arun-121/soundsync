@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { getAudioElement } from "./util";
 import { usePlayingContext } from "./context/PlayingContextProvider";
-
-const Searchbar = () => {
-  const [query, setQuery] = useState(" ");
+import React from "react";
+const Searchbar = React.memo(() => {
+  const [query, setQuery] = useState("");
   const [suggestionUI, setSuggestionUI] = useState([]);
   const [cachedResponses, setCachedResponses] = useState({});
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const { isPlaying, setIsPlaying } = usePlayingContext();
   // console.log(usePlayingContext());
+  console.log(suggestionUI);
   useEffect(() => {
     if (query === "") return;
     if (cachedResponses[query]) {
@@ -66,10 +67,11 @@ const Searchbar = () => {
             overflowY: "scroll",
           }}
         >
-          {suggestionUI.map((e) => {
+          {suggestionUI.map((e, i) => {
             return (
               <>
                 <div
+                  key={i}
                   style={{ cursor: "pointer" }}
                   onMouseDown={(event) => {
                     event.preventDefault(); // Prevents input blur
@@ -108,6 +110,6 @@ const Searchbar = () => {
       )}
     </>
   );
-};
+});
 
 export default Searchbar;

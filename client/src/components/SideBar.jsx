@@ -1,17 +1,13 @@
-import {
-  Card,
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix,
-} from "@material-tailwind/react";
+import { Card, Typography, List, ListItem } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { Home, Users, LogOut } from "lucide-react";
 import "../index.css";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/configuration";
+import { useAuthContext } from "./context/AuthProvider";
 
 export function SideBar() {
+  const { setIsLoggedIn } = useAuthContext();
   const navigate = useNavigate();
   return (
     <Card className=" sidebar    rounded-none bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white font-custom h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 flex-col">
@@ -71,14 +67,14 @@ export function SideBar() {
             <img
               src={localStorage.getItem("profile")}
               alt=""
-              width={"50px"}
-              height={"50px"}
+              width={"40px"}
+              height={"40px"}
               style={{ borderRadius: "100px" }}
             />
           </div>
           <div>
             <p>{localStorage.getItem("email")}</p>
-            <h1>{localStorage.getItem("name")}</h1>
+            <h2>{localStorage.getItem("name")}</h2>
           </div>
         </div>
         <dialog className="bg-gradient-to-r from-gray-900 via-gray-900 to-black modal p-5 text-white rounded-[10px]">
@@ -93,7 +89,8 @@ export function SideBar() {
                   .then(() => {
                     navigate("/login");
                     window.audioElement.src = "";
-                    localStorage.removeItem("authId");
+                    setIsLoggedIn(false);
+                    localStorage.clear();
                   })
                   .catch((err) => console.log(err));
               }}
