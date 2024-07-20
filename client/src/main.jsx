@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { Provider } from "react-redux";
+import { store } from "./components/redux/store.js";
 import Auth from "./components/Auth.jsx";
 import {
   BrowserRouter as Router,
@@ -23,9 +25,11 @@ import Protected from "./Protected.jsx";
 import ProtectedLogin from "./ProtectedLogin.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </Provider>
   </Router>
 );
 
